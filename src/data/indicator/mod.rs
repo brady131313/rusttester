@@ -1,5 +1,3 @@
-use std::fmt::Debug;
-
 use anyhow::Result;
 
 use super::{
@@ -7,7 +5,11 @@ use super::{
     feed::{TruncateFeed, UpdateFeed},
 };
 
-pub trait Indicator: Debug + UpdateFeed + TruncateFeed {
+pub mod ema;
+pub mod ind;
+pub mod sma;
+
+pub trait Indicator: UpdateFeed + TruncateFeed {
     fn symbol(&self) -> &Symbol;
 
     fn fill(&mut self, bars: &[OHLCBar]) -> Result<BarDate>;

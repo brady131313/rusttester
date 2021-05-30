@@ -4,6 +4,9 @@ use anyhow::Result;
 
 use crate::data::{asset::Symbol, data_handler::DataHandler, data_loader::csv_loader::CsvLoader};
 
+#[macro_use]
+extern crate approx;
+
 pub mod data;
 pub mod strategy;
 
@@ -19,12 +22,6 @@ pub fn run() -> Result<()> {
     while handler.update() {
         if let Some(bar) = handler.ohlc(&symbols[0]) {
             print!("{:?}", bar.bardate);
-        }
-    }
-
-    for symbol in &symbols {
-        if let Some(data) = handler.ohlc_n(symbol, 9999) {
-            println!("{} {:?}", symbol, data.count())
         }
     }
 
