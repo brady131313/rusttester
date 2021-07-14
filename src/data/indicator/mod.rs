@@ -5,9 +5,7 @@ use super::{
     feed::{TruncateFeed, UpdateFeed},
 };
 
-pub mod ema;
 pub mod ind;
-pub mod sma;
 
 pub trait Indicator: UpdateFeed + TruncateFeed {
     fn symbol(&self) -> &Symbol;

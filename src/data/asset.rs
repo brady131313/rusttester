@@ -2,6 +2,7 @@ use std::fmt;
 
 use anyhow::Result;
 use chrono::{NaiveDate, Utc};
+use rustta::input::Open;
 
 use super::DataError;
 
@@ -58,13 +59,14 @@ impl GetBarDate for OHLCBar {
 #[derive(Debug, Default, Clone)]
 pub struct OHLCBar {
     pub bardate: BarDate,
-    pub open: f32,
-    pub low: f32,
-    pub high: f32,
-    pub close: f32,
-    pub adj_close: f32,
+    pub open: f64,
+    pub low: f64,
+    pub high: f64,
+    pub close: f64,
+    pub adj_close: f64,
     pub volume: u32,
 }
+
 #[cfg(test)]
 mod tests {
     use super::*;

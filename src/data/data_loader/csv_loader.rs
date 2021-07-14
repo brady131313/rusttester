@@ -28,11 +28,11 @@ impl TryFrom<StringRecord> for OHLCBar {
 
     fn try_from(value: StringRecord) -> Result<Self, Self::Error> {
         let bardate = BarDate::from(NaiveDate::parse_from_str(&value[0], "%F")?);
-        let open = value[1].parse::<f32>()?;
-        let high = value[2].parse::<f32>()?;
-        let low = value[3].parse::<f32>()?;
-        let close = value[4].parse::<f32>()?;
-        let adj_close = value[5].parse::<f32>()?;
+        let open = value[1].parse::<f64>()?;
+        let high = value[2].parse::<f64>()?;
+        let low = value[3].parse::<f64>()?;
+        let close = value[4].parse::<f64>()?;
+        let adj_close = value[5].parse::<f64>()?;
         let volume = value[6].parse::<u32>()?;
 
         Ok(Self {
